@@ -28,7 +28,7 @@ class IPAdapter(ipList: List<String>) : RecyclerView.Adapter<IPAdapter.IPViewHol
     }
 
     override fun onBindViewHolder(holder: IPViewHolder, position: Int) {
-//        holder.view.ipTextView.setBackgroundColor(if (position % 2 == 0) Color.LTGRAY else Color.WHITE)
+        holder.view.ipTextView.setBackgroundColor(if (position % 2 == 0) Color.LTGRAY else Color.WHITE)
         holder.view.ipTextView.text = ipList[position]
     }
 
