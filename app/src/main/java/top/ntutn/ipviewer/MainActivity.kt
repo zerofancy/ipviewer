@@ -7,17 +7,24 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.net.NetworkInterface
 
 class MainActivity : AppCompatActivity() {
+    private val adapter by lazy { IPAdapter(listOf()) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initView()
         initIPList()
+    }
+
+    private fun initView() {
+        ipRecyclerView.layoutManager = LinearLayoutManager(this)
+        ipRecyclerView.adapter = adapter
     }
 
     private fun initIPList() {
         val ipList = getIPList()
-        ipRecyclerView.layoutManager = LinearLayoutManager(this)
-        ipRecyclerView.adapter = IPAdapter(ipList)
+        adapter.ipList = ipList
     }
 
     private fun getIPList(): List<String> {
